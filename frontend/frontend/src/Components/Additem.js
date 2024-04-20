@@ -1,43 +1,97 @@
 import React,{useState} from "react";
+import axios from "axios";
 
 export default function AddStudent(){
+
+    const[fName,setfName]=useState("");
+    const[fType,setfType]=useState("");
+    const[pprice,setpprice]=useState("");
+    const[status,setstatus]=useState("");
+    const[quantity,setquantity]=useState("");
+    const[sprice,setsprice]=useState("");
+   
+    function sendData(e){
+        e.preventDefault();
+
+        const newItem ={    
+            fName,
+            fType,
+            pprice,
+            status,
+            quantity,
+            sprice
+
+        }
+
+       axios.post("http://localhost:8090/furniture/add",newItem).then(()=>{
+        alert("New Item inserted")
+       }).catch((err)=>{
+        alert(err);
+       })
+
+
+
+    }
+
+
+
     return(
-        <div>
+        <div className="container">
 <h1>New Furniture</h1>
-    <form action="/submit" method="post">
+    <form onSubmit={sendData} className="form-group" action="/submit" method="post">
         <div>
-            <label for="furnitureName">Furniture Name:</label>
-            <input type="text" id="furnitureName" name="furnitureName" placeholder="Enter furniture name"/>
+            <label for="furnitureName">Furniture Name:</label><br/>
+            <input type="text" id="furnitureName" name="furnitureName" placeholder="Enter furniture name" 
+            onChange={(e)=>{
+                setfName(e.target.value);
+            }}
+            /><br/><br/>
         </div>
         <div>
-            <label for="furnitureType">Type:</label>
-            <select id="furnitureType" name="furnitureType">
+            <label for="furnitureType">Type:</label><br/>
+            <select id="furnitureType" name="furnitureType" onChange={(e)=>{
+                setfType(e.target.value);
+            }}>
                 <option value="Desks">Select</option>
                 <option value="Desks">Desks</option>
                 <option value="Chair">Chair</option>
                 <option value="Container">Container</option>
                 <option value="Beds">Beds</option>
-            </select>
+            </select><br/><br/>
         </div>
         <div>
-            <label for="purchasePrice">Purchase Price (LKR):</label>
-            <input type="number" id="purchasePrice" name="purchasePrice" min="0.00" max="10000.00" step="0.01"/>
+            <label for="purchasePrice">Purchase Price (LKR):</label><br/>
+            <input type="number" id="purchasePrice" name="purchasePrice" min="0.00" max="100000000000.00" step="0.01" 
+            onChange={(e)=>{
+                setpprice(e.target.value);
+            }}/><br/><br/>
         </div>
         <div>
-            <label for="status">Status:</label>
-            <select id="status" name="status">
+            <label for="status">Status:</label><br/>
+            <select id="status" name="status"            
+            onChange={(e)=>{
+                setstatus(e.target.value);
+            }}>
                 <option value="Available">Available</option>
                 <option value="Out of Stock">Out of Stock</option>
                 <option value="Obsolete">Obsolete</option>
-            </select>
+            </select><br/><br/>
         </div>
         <div>
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="0" max="10000" step="1"/>
+            <label for="quantity">Quantity:</label><br/>
+            <input type="number" id="quantity" name="quantity" min="0" max="10000" step="1" 
+            onChange={(e)=>{
+                setquantity(e.target.value);
+            }}
+                /><br/><br/>
         </div>
         <div>
-            <label for="sellingPrice">Selling Price (LKR):</label>
-            <input type="number" id="sellingPrice" name="sellingPrice" min="0.00" max="1000000000.00" step="0.01"/>
+            <label for="sellingPrice">Selling Price (LKR):</label><br/>
+            <input type="number" id="sellingPrice" name="sellingPrice" min="0.00" max="1000000000.00" step="0.01"
+            onChange={(e)=>{
+                setsprice(e.target.value);
+            }}
+            /><br/><br/>
         </div>
         <input type="submit" value="Submit"/>
     </form>
