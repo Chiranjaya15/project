@@ -1,0 +1,8 @@
+{
+    "explorer.compactFolders": false,
+    "githubPullRequests.remotes": [
+        "origin",
+        "upstream",
+        "project2.2"
+    ]
+}
