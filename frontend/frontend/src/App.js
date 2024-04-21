@@ -1,4 +1,6 @@
 import Additem from "./Components/Additem"
+import Update from  "./Components/Update"
+import Updated from "./Components/Updated"
 import Header from "./Components/Header"
 import './App.css';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
@@ -25,6 +27,13 @@ function App() {
       <Routes>
       <Route path="/Furniturelist/deleted" exact Component={Deleted}/>
       </Routes>
+      <Routes>
+      <Route path="/Furniturelist/updated" exact Component={Updated}/>
+      </Routes>
+      <Routes>
+      <Route path="/Furniturelist/update" exact Component={Update}/>
+      </Routes>
+   
       
  
     </div>

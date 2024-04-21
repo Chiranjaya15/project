@@ -8,12 +8,10 @@ export default function Deleted(){
 
     return(
         <div className="container">
-            <h1>FURNITURE DELETED</h1>
+            <h1>FURNITURE UPDATED</h1>
            
         </div>
       
     );
     
   }
-  
- 

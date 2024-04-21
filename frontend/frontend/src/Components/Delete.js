@@ -12,7 +12,9 @@ export default function Delete(){
 
     useEffect(()=>{
         axios.get(Url)
-        .then(res=>console.log(res.data))
+        .then((res)=>{console.log(res.data)
+            setFurnitureItems(res.data)
+        console.log({furnitueItems})})
         .catch(err=>console.log(err));
     },[])
 
@@ -25,7 +27,7 @@ export default function Delete(){
 
     return(
         <div className="container"> 
-            <h2>Furniture to deleted </h2>
+            <h2>Furniture to be deleted </h2>
             <table className="table">
                 <thead>
                     <tr>
@@ -56,7 +58,11 @@ export default function Delete(){
                 </table>
 
                 <li className="nav-item">
-                <a className="nav-link" href={`/Furniturelist/deleted`} onClick={deletedRecord}>Delete</a>
+                <label for="deleteRecord"> Are you Sure you want to Delete this Record :</label><br/>
+                <a className="nav-link" id="deleteRecord" href={`/Furniturelist/deleted`} onClick={deletedRecord}>Yes Delete!</a>
+                </li>
+                <li className="nav-item">
+                <a className="nav-link" id="deleteRecord" href={`/Furniturelist`}>No Don't!</a>
                 </li>
 
         </div>
