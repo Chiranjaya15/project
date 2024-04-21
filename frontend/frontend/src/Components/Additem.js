@@ -14,17 +14,18 @@ export default function AddStudent(){
         e.preventDefault();
 
         const newItem ={    
-            fName,
-            fType,
-            pprice,
-            status,
-            quantity,
-            sprice
+            name :fName,
+            type:fType,
+            pprice :pprice,
+            status :status,
+            quantity :quantity,
+            sprice :sprice
 
         }
 
        axios.post("http://localhost:8090/furniture/add",newItem).then(()=>{
         alert("New Item inserted")
+
        }).catch((err)=>{
         alert(err);
        })
@@ -71,7 +72,8 @@ export default function AddStudent(){
             <select id="status" name="status"            
             onChange={(e)=>{
                 setstatus(e.target.value);
-            }}>
+            }}> 
+                <option value="Available">Select</option>
                 <option value="Available">Available</option>
                 <option value="Out of Stock">Out of Stock</option>
                 <option value="Obsolete">Obsolete</option>
