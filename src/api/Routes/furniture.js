@@ -5,7 +5,7 @@ let jsonnames;
 //Create furniture record
 //http:localhost:8090/furniture/add
 router.route("/add").post(async(req,res)=>{
-    const {name,type,pprice,status,quantity,sprice}= req.body; 
+    const {name,type,pprice,status,quantity,sprice,description}= req.body; 
 
     const newfurniture = new furniture({
         name: name,
@@ -13,7 +13,8 @@ router.route("/add").post(async(req,res)=>{
         pprice: pprice,
         status: status,
         quantity: quantity,
-        sprice: sprice
+        sprice: sprice,
+        description:description
 
     })
 
@@ -57,6 +58,19 @@ router.route("/add").post(async(req,res)=>{
 
 
     //get the names field only
+    router.route("/:name").get(async(req,res)=>{
+        let Name=req.params.name;
+
+        furniture.find({name:Name},{}).
+        then((furniture)=>{
+            jsonnames=furniture;
+            res.json(furniture)
+        }).catch((err)=>{
+            console.log(err)
+
+        })
+    })
+
     router.route("/names").get(async(req,res)=>{
         furniture.find({},{name:1,_id:0}).
         then((furniture)=>{
@@ -74,7 +88,7 @@ router.route("/add").post(async(req,res)=>{
 
     router.route("/update/:name").put(async(req,res)=>{
        let nameid=req.params.name;
-       const {name,type,pprice,status,quantity,sprice}= req.body;
+       const {name,type,pprice,status,quantity,sprice,description}= req.body;
 
     
     const updatefurniture = {
@@ -83,7 +97,8 @@ router.route("/add").post(async(req,res)=>{
         pprice:pprice,
         status:status,
         quantity:quantity,
-        sprice:sprice
+        sprice:sprice,
+        description:description
     }
 
    

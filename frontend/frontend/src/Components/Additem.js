@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import axios from "axios";
+import { set } from "mongoose";
 
 export default function AddStudent(){
 
@@ -9,8 +10,9 @@ export default function AddStudent(){
     const[status,setstatus]=useState("");
     const[quantity,setquantity]=useState("");
     const[sprice,setsprice]=useState("");
+    const[description,setdescription]=useState("");
    
-    function sendData(e){
+   async function sendData(e){
         e.preventDefault();
 
         const newItem ={    
@@ -19,18 +21,25 @@ export default function AddStudent(){
             pprice :pprice,
             status :status,
             quantity :quantity,
-            sprice :sprice
+            sprice :sprice,
+            description:description
+            
 
         }
 
-       axios.post("http://localhost:8090/furniture/add",newItem).then(()=>{
-        alert("New Item inserted")
+      try { await axios.post("http://localhost:8090/furniture/add",newItem);
+        alert("New Item inserted");
+            setfName("");
+            setfType("");
+            setpprice("");
+            setstatus("");
+            setquantity("");
+            setsprice("");
+            setdescription("");
 
-       }).catch((err)=>{
-        alert(err);
-       })
-
-
+    }catch(err){
+        alert(err.message);
+       }
 
     }
 
@@ -92,6 +101,14 @@ export default function AddStudent(){
             <input type="number" id="sellingPrice" name="sellingPrice" min="0.00" max="1000000000.00" step="0.01"
             onChange={(e)=>{
                 setsprice(e.target.value);
+            }}
+            /><br/><br/>
+        </div>
+        <div>
+            <label for="furnituredescription">Furniture Description:</label><br/>
+            <input type="text" id="furnituredescription" name="furnituredescription" placeholder="Enter Furniture Description" 
+            onChange={(e)=>{
+                setdescription(e.target.value);
             }}
             /><br/><br/>
         </div>

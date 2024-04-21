@@ -6,7 +6,7 @@ function Header (){
 
       <>
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand" href="#" style={{color:"red"}} >Navbar</a>
+  <a className="navbar-brand" href="#" style={{color:"red"}} >Menu</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -19,10 +19,10 @@ function Header (){
         <a className="nav-link" href="/add">Add new Item</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">Add Stock</a>
+        <a className="nav-link" href="/addstock">Add Stock</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">Update Items</a>
+        <a className="nav-link" href="/Furniturelist">Furniture List</a>
       </li>
 
     </ul>

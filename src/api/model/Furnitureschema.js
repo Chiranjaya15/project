@@ -28,6 +28,10 @@ const furnitureSchema = new Schema({
     sprice :{
         type : Number,
         required :true
+    },
+    description :{
+        type : String,
+        required :true
     }
 })
 
