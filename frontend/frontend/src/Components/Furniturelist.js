@@ -53,13 +53,19 @@ import axios from "axios";
                                      <td>{furniture.sprice}</td>
                                      <td>{furniture.description}</td>
                                      <td>
-                                     <li className="nav-item">
-                                        <a className="nav-link" href={`/Furniturelist/update?name=${furniture.name}`} onClick={() => handleUpdateClick(furniture.name)}>
-                                        Update</a>
-                                     </li>
-                                     <li className="nav-item">
-                                             <a className="nav-link" href={`/Furniturelist/delete?name=${furniture.name}`} onClick={() => handleUpdateClick(furniture.name)}>Delete</a>
-                                    </li>
+                                     <li>
+                                      <a className="nav-link" href={`/Furniturelist/update?name=${furniture.name}`} 
+                                      onClick={() => handleUpdateClick(furniture.name)}>
+                                         Update</a></li>
+                                     <li>
+                                      <a className="nav-link" href={`/Furniturelist/delete?name=${furniture.name}`} 
+                                      onClick={() => handleUpdateClick(furniture.name)}>
+                                       Delete</a></li>
+                                       <li>
+                                      <a className="nav-link" href={`/Furniturelist/stock?name=${furniture.name}`} 
+                                      onClick={() => handleUpdateClick(furniture.name)}>
+                                       Add Stock</a></li>
+                                       
                                  </td>
                                 </tr>
                         })

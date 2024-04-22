@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import axios from "axios";
 import { set } from "mongoose";
 
-export default function AddStudent(){
+export default function AddFurniture(){
 
     const[fName,setfName]=useState("");
     const[fType,setfType]=useState("");
