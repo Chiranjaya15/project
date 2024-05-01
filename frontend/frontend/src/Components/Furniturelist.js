@@ -1,5 +1,6 @@
 import React,{ useState ,useEffect } from "react";
 import axios from "axios";
+import styles from "./styles.css";
 
 
  function Updateitems(){
@@ -21,6 +22,7 @@ import axios from "axios";
     console.log(name);
   }
 
+
    
     return(
 
@@ -32,6 +34,7 @@ import axios from "axios";
                 <table className="table">
                 <thead>
                     <tr>
+                       <th>Number </th>
                         <th>Furniture Name </th>
                         <th>Type</th>
                         <th>Purchase price</th>
@@ -39,12 +42,14 @@ import axios from "axios";
                         <th>Quantity</th>
                         <th>Selling Price</th>
                         <th>Description</th>
+                        <th>Profit</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         furniture.map((furniture,index)=>{
                             return <tr key={index}>
+                                      <td>{index + 1}</td>
                                       <td>{furniture.name}</td>
                                       <td>{furniture.type}</td>
                                       <td>{furniture.pprice}</td>
@@ -53,20 +58,32 @@ import axios from "axios";
                                      <td>{furniture.sprice}</td>
                                      <td>{furniture.description}</td>
                                      <td>
-                                     <li>
-                                      <a className="nav-link" href={`/Furniturelist/update?name=${furniture.name}`} 
-                                      onClick={() => handleUpdateClick(furniture.name)}>
-                                         Update</a></li>
-                                     <li>
-                                      <a className="nav-link" href={`/Furniturelist/delete?name=${furniture.name}`} 
-                                      onClick={() => handleUpdateClick(furniture.name)}>
-                                       Delete</a></li>
-                                       <li>
-                                      <a className="nav-link" href={`/Furniturelist/stock?name=${furniture.name}`} 
-                                      onClick={() => handleUpdateClick(furniture.name)}>
-                                       Add Stock</a></li>
-                                       
-                                 </td>
+                                    <ul style={{ listStyleType: "none", padding: 0 }}>
+                                        <li>
+                                            <a 
+                                                className="nav-link" 
+                                                href={`/Furniturelist/update?name=${furniture.name}`} 
+                                                onClick={() => handleUpdateClick(furniture.name)}
+                                                style={{ textDecoration: "none", color: "#007BFF" }}
+                                            >
+                                                Update
+                                            </a>
+                                        </li>
+                                        <br/>
+                                        <br/>
+                                        <li>
+                                            <a 
+                                                className="nav-link" 
+                                                href={`/Furniturelist/delete?name=${furniture.name}`} 
+                                                onClick={() => handleUpdateClick(furniture.name)}
+                                                style={{ textDecoration: "none", color: "#DC3545" }}
+                                            >
+                                                Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </td>
+
                                 </tr>
                         })
                     }

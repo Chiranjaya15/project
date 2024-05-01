@@ -16,12 +16,11 @@ function Header (){
        <a className="nav-link" href="/home">Home <span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/Furniturelist">Furniture List</a>
+        <a className="nav-link" href="/add">Add new Furniture</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/add">Add new Item</a>
-      </li>
-      
+        <a className="nav-link" href="/Furniturelist">Furniture List</a>
+      </li>      
       <li className="nav-item">
         <a className="nav-link" href="/Deliverytable">Delivery List</a>
       </li>

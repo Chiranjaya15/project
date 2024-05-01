@@ -1,51 +1,55 @@
-const router =require("express").Router();
-let delivery =require("../model/Deliveryschema");
+const router = require("express").Router();
+let Delivery = require("../model/Deliveryschema");
 
-//create delivery record 
-//http:localhost:8090/delivery/add
+// Create delivery record 
+router.route("/add").post(async(req, res) => {
+    const {deliveryid, customername, items, transactionid, address, status} = req.body;
 
-router.route("/add").post(async(req,res)=>{
-    const {deliveryid,customername,items,transactionid,address,status}=req.body;
+    const newDelivery = new Delivery({
+        deliveryid,
+        customername,
+        items,
+        transactionid,
+        address,
+        status
+    });
 
-    const newdelivery = new delivery({
-
-        deliveryid:deliveryid,
-        customername:customername,
-        items:items,
-        transactionid:transactionid,
-        address:address,
-        status:status
-    })
-
-    newdelivery.save().then(()=>{
-        res.json("Delivery created")
-    }).catch((err)=>{
+    newDelivery.save().then(() => {
+        res.json("Delivery created");
+    }).catch((err) => {
         console.log(err);
+    });
+});
 
-    })
-
-})//end creation of delivery
-
-//starting get all deliveries
-//http:localhost:8090/delivery/
-router.route("/").get(async(res,req)=>{
-    delivery.find().then((delivery)=>{
-        res.json(delivery)
-    }).catch((err)=>{
+// Get all deliveries
+router.route("/").get(async(req, res) => {
+    Delivery.find().then((deliveries) => {
+        res.json(deliveries);
+    }).catch((err) => {
         console.log(err);
-    })
+    });
+});
 
-    //http:localhost:8090/transaction/update/:name
-    router.route("/update/:deliveryid").put(async(res,req)=>{
-        let deliverynum=req.params.deliveryid
-        const {deliveryid,customername,items,transactionid,address,status}=req.body
+// Update delivery
+router.route("/update/:deliveryid").put(async(req, res) => {
+    let deliveryNum = req.params.deliveryid;
+    const {deliveryid, customername, items, transactionid, address, status} = req.body;
 
-        
+    // You need to add the update logic here
+});
 
+//http:localhost:8090/delivery/delete/:name
 
-    })
+router.route("/delete/:deliveryid").delete(async(req, res) => {
+    let delivery = req.params.deliveryid;
 
+    await Delivery.findOneAndDelete({deliveryid: delivery})
+    .then(() => {
+        res.status(200).send({status: "Delivery record deleted"});
+    }).catch((err) => {
+        console.log(err.message);
+        res.status(500).send({status: "Error with delete Record", error: err.message});
+    });
+});
 
-})
-
-module.exports=router;
+module.exports = router;

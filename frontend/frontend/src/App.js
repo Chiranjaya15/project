@@ -7,6 +7,7 @@ import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import Furniturelist from "./Components/Furniturelist";
 import Delete from "./Components/Delete"
 import Deleted  from "./Components/Deleted";
+import Deliverylist from "./Components/Deliverylist";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
       </Routes>
       <Routes>
       <Route path="/Furniturelist/update" exact Component={Update}/>
+      </Routes>
+      <Routes>
+      <Route path="/Deliverytable" exact Component={Deliverylist}/>
       </Routes>
    
       

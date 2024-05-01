@@ -2,8 +2,10 @@ import React,{useState} from "react";
 import axios from "axios";
 import { set } from "mongoose";
 
-export default function AddFurniture(){
+export default function AddFurniture(){    
 
+
+    const[furniturenames,setfurniturenames]=useState([]);
     const[fName,setfName]=useState("");
     const[fType,setfType]=useState("");
     const[pprice,setpprice]=useState("");
@@ -22,29 +24,25 @@ export default function AddFurniture(){
             status :status,
             quantity :quantity,
             sprice :sprice,
-            description:description
-            
-
+            description:description 
         }
+        window.location.href="/Furniturelist";
+       
 
       try { await axios.post("http://localhost:8090/furniture/add",newItem);
         alert("New Item inserted");
-            setfName("");
-            setfType("");
-            setpprice("");
-            setstatus("");
-            setquantity("");
-            setsprice("");
-            setdescription("");
+            setfName(" ");
+            setfType(" ");
+            setpprice(" ");
+            setstatus(" ");
+            setquantity(" ");
+            setsprice(" ");
+            setdescription(" ");
 
     }catch(err){
         alert(err.message);
        }
-
     }
-
-
-
     return(
         <div className="container">
 <h1>New Furniture</h1>
@@ -114,9 +112,7 @@ export default function AddFurniture(){
         </div>
         <input type="submit" value="Submit"/>
     </form>
-
     </div>
-
 
     )
     
