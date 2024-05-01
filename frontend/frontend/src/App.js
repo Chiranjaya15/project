@@ -18,24 +18,20 @@ function App() {
 
       <Routes>
       <Route path="/add" exact Component={Additem}/>
-      </Routes> 
-      <Routes>
+      
+     
       <Route path="/Furniturelist" exact Component={Furniturelist}/>
-      </Routes> 
-      <Routes>
+      
       <Route path="/Furniturelist/delete" exact Component={Delete}/>
-      </Routes>
-      <Routes>
+     
       <Route path="/Furniturelist/deleted" exact Component={Deleted}/>
-      </Routes>
-      <Routes>
+      
       <Route path="/Furniturelist/updated" exact Component={Updated}/>
-      </Routes>
-      <Routes>
+      
       <Route path="/Furniturelist/update" exact Component={Update}/>
-      </Routes>
-      <Routes>
-      <Route path="/Deliverytable" exact Component={Deliverylist}/>
+      
+     <Route path="/Deliverytable" exact Component={Deliverylist}/>
+
       </Routes>
    
       

@@ -24,7 +24,8 @@ export default function Update(){
         axios.get(Url)
         .then((res)=>{console.log(res.data)
             setfurnitureUpdate(res.data)
-        console.log({setfurnitureUpdate})})
+        console.log({setfurnitureUpdate},{Url})
+    })
         .catch(err=>console.log(err));
     },[])
 
@@ -52,8 +53,7 @@ export default function Update(){
             pprice:pprice,
             sprice:sprice,
             quantity :quantities,
-            description:descriptions
-            
+            description:descriptions         
 
         }
         window.location.href="/Furniturelist";
@@ -68,17 +68,14 @@ export default function Update(){
        }
 
     }
-
-   
-
-
+    
     return(
         <div className="container">
         <h1>Update Furniture {furnitureName}</h1>
             <form onSubmit={updateFurniture} className="form-group" action="/submit" method="post">
                 <div>
-                    <label for="furnitureName">Furniture Name:</label><br/>
-                    <input type="text" id="furnitureName" name="furnitureName" value={names} 
+                    <label for="furnitureName">Furniture Name: </label><br/>
+                    <input type="text" id="furnitureName" name="furnitureName" value={names}
                     onChange={(e)=>{
                         setNames(e.target.value);
                     }}
@@ -128,7 +125,7 @@ export default function Update(){
                     <label for="sprice">Selling Price:</label><br/>
                     <input type="number" id="sprice" value={sprice} name="sprice" min="0"  step="1" 
                     onChange={(e)=>{
-                        setQuantities(e.target.value);
+                        setSprice(e.target.value);
                     }}
                         /><br/><br/>
                 </div>

@@ -38,7 +38,7 @@ router.route("/update/:deliveryid").put(async(req, res) => {
     // You need to add the update logic here
 });
 
-//http:localhost:8090/delivery/delete/:name
+//http:localhost:8090/delivery/delete/:deliveryid
 
 router.route("/delete/:deliveryid").delete(async(req, res) => {
     let delivery = req.params.deliveryid;
