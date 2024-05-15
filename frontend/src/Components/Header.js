@@ -22,6 +22,10 @@ function Header (){
       <li className="nav-item">
         <a className="nav-link" href="/Deliverytable">Delivery List</a>
       </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/adddelivery">Delivery Addition</a>
+      </li>
+      
 
     </ul>
   </div>

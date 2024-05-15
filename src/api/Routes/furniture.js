@@ -82,6 +82,16 @@ router.route("/add").post(async(req,res)=>{
         })
     })
 
+    router.route("/furniture/:id").get(async(req, res) => {
+        const id = req.params.id;
+        furniture.findById(id)
+        .then((furniture) => {
+            res.json(furniture)
+        }).catch((err) => {
+            console.log(err)
+        })
+    })
+
 
 
     //http:localhost:8090/furniture/update/:name

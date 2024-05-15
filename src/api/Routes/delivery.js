@@ -3,7 +3,7 @@ let Delivery = require("../model/Deliveryschema");
 
 // Create delivery record 
 router.route("/add").post(async(req, res) => {
-    const {deliveryid, customername, items, transactionid, address, status} = req.body;
+    const {deliveryid, customername, items, transactionid, address, status,createdAt,completedAt} = req.body;
 
     const newDelivery = new Delivery({
         deliveryid,
@@ -11,7 +11,9 @@ router.route("/add").post(async(req, res) => {
         items,
         transactionid,
         address,
-        status
+        status,
+        createdAt,
+        completedAt
     });
 
     newDelivery.save().then(() => {
@@ -38,7 +40,7 @@ router.route("/update/:deliveryid").put(async(req, res) => {
     // You need to add the update logic here
 });
 
-//http:localhost:8090/delivery/delete/:deliveryid
+//http://localhost:8090/delivery/:deilveryid
 
 router.route("/delete/:deliveryid").delete(async(req, res) => {
     let delivery = req.params.deliveryid;

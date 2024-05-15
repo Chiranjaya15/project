@@ -30,11 +30,14 @@ const Delivery =new Dschema({
     },
     status:{
         type:String,
-        required:true,
+        required:false,
         default: "Initiated"
-    }
-
-    
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    completedAt: Date     
     
 
 })

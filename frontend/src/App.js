@@ -4,10 +4,11 @@ import Updated from "./Components/Updated"
 import Header from "./Components/Header"
 import './App.css';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
-import Furniturelist from "./Components/Furniturelist";
+import Furniturelist from "./Components/furniturelist";
 import Delete from "./Components/Delete"
 import Deleted  from "./Components/Deleted";
 import Deliverylist from "./Components/Deliverylist";
+import adddelivery from "./Components/adddelivery";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
       <Route path="/Furniturelist/update" exact Component={Update}/>
       
      <Route path="/Deliverytable" exact Component={Deliverylist}/>
+
+     <Route path="/adddelivery" exact Component={adddelivery}/>
 
       </Routes>
    

@@ -5,13 +5,19 @@ import axios from "axios";
 export default function Deliverylist(){
 
 
-    const[Delivery,setDelivery]=useState([]);
+    const [Delivery, setDelivery] = useState([]);
 
-    useEffect(()=>{
-        axios.get("http://localhost:8090/delivery/")
-        .then(res=>setDelivery(res.data))
-        .catch((err)=>{console.log(err)})
-      },[])
+useEffect(() => {
+  axios.get("http://localhost:8090/delivery/")
+    .then(res => setDelivery(res.data))
+    .catch((err) => { console.log(err) })
+}, [])
+
+let formattedDates = Delivery.map(delivery => {
+  let date = new Date(delivery.createdAt);
+  return `${date.getFullYear()}-${('0' + (date.getMonth()+1)).slice(-2)}-${('0' + date.getDate()).slice(-2)}`;
+});
+
 
       return(
 
@@ -29,6 +35,7 @@ export default function Deliverylist(){
                         <th>TransactionID</th>
                         <th>address</th>
                         <th>Status</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +48,7 @@ export default function Deliverylist(){
                                       <td>{delivery.transactionid}</td>
                                      <td>{delivery.address}</td>
                                      <td>{delivery.status}</td>
+                                     <td>{formattedDates}</td>
                                      
                                 </tr>
                         })
